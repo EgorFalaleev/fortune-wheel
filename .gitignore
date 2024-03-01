@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+/Fortune Wheel/[Ll]ibrary/
+/Fortune Wheel/[Tt]emp/
+/Fortune Wheel/[Oo]bj/
+/Fortune Wheel/[Bb]uild/
+/Fortune Wheel/[Bb]uilds/
+/Fortune Wheel/[Ll]ogs/
+/Fortune Wheel/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
