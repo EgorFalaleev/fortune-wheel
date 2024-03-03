@@ -9,7 +9,7 @@ namespace _Project.Scripts.Runtime
     public class FortuneWheel : MonoBehaviour
     {
         [SerializeField] private TMP_Text[] _wheelNumbersTexts;
-        
+
         private WheelData _wheelData;
 
         private void Start()
@@ -26,6 +26,14 @@ namespace _Project.Scripts.Runtime
             {
                 _wheelNumbersTexts[i].text = _wheelData.WheelNumbers[i].ToString();
             }
+
+            Spin();
+        }
+
+        public void Spin()
+        {
+            var resultIndex = UnityEngine.Random.Range(0, _wheelData.WheelNumbers.Count);
+            Debug.Log($"Result: {_wheelData.WheelNumbers[resultIndex]}");
         }
     }
 
@@ -42,11 +50,11 @@ namespace _Project.Scripts.Runtime
             WheelNumbers = new List<int>();
             _random = new Random();
         }
-        
+
         public void GenerateWheelNumbers()
         {
             WheelNumbers.Clear();
-            
+
             while (WheelNumbers.Count != _wheelSize)
             {
                 var nextNumber = _random.Next(1, 21) * 5;

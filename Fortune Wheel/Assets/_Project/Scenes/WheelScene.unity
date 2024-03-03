@@ -816,7 +816,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 447905308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1336153628}
+        m_TargetAssemblyTypeName: _Project.Scripts.Runtime.FortuneWheel, Assembly-CSharp
+        m_MethodName: Spin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &447905308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,6 +2079,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810baa34761c40e58ad25e5736a1f1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wheelNumbersTexts:
+  - {fileID: 1150091924}
+  - {fileID: 204588489}
+  - {fileID: 1656322026}
+  - {fileID: 275054149}
+  - {fileID: 1289588426}
+  - {fileID: 1511236296}
+  - {fileID: 982723154}
+  - {fileID: 980796642}
+  - {fileID: 425846581}
+  - {fileID: 157104045}
+  - {fileID: 1826461539}
+  - {fileID: 1695074298}
 --- !u!1 &1511236294
 GameObject:
   m_ObjectHideFlags: 0
