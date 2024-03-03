@@ -10,6 +10,8 @@ namespace _Project.Scripts.Runtime
     {
         [SerializeField] private TMP_Text[] _wheelNumbersTexts;
 
+        public int Result;
+
         private WheelData _wheelData;
 
         private void Start()
@@ -33,6 +35,7 @@ namespace _Project.Scripts.Runtime
         public void Spin()
         {
             var resultIndex = UnityEngine.Random.Range(0, _wheelData.WheelNumbers.Count);
+            Result = resultIndex;
             Debug.Log($"Result: {_wheelData.WheelNumbers[resultIndex]}");
         }
     }
