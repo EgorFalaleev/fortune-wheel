@@ -12,9 +12,19 @@ public class WheelGenerator : MonoBehaviour
     
     public List<int> WheelNumbers { get; private set; }
 
-    public void GenerateWheel()
+    private void Awake()
     {
         WheelNumbers = new List<int>();
+    }
+
+    private void Start()
+    {
+        GenerateWheel();
+    }
+
+    public void GenerateWheel()
+    {
+        WheelNumbers.Clear();
 
         // fill the list with unique values
         while (WheelNumbers.Count != RuntimeConstants.WheelSettings.WheelSize)
