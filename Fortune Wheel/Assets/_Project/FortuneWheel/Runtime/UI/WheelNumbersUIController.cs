@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.FortuneWheel.Runtime.UI
 {
-    public class WheelUIController : MonoBehaviour
+    public class WheelNumbersUIController : MonoBehaviour
     {
         [SerializeField] private TMP_Text[] _wheelNumbersTexts;
         

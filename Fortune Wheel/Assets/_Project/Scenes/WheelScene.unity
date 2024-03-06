@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 447905309}
   - component: {fileID: 447905308}
   - component: {fileID: 447905307}
+  - component: {fileID: 447905310}
   m_Layer: 5
   m_Name: Spin Button
   m_TagString: Untagged
@@ -792,7 +793,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -802,10 +803,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 247bd1058e120f34db75537588acd434, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 93d5d94b3adbab544a2e5386b972ff25, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 93d5d94b3adbab544a2e5386b972ff25, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 539befe6155064648ad96d1c49f5f3cc, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -817,20 +818,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: _Project.Scripts.Runtime.FortuneWheel, Assembly-CSharp
-        m_MethodName: Spin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1336153629}
-        m_TargetAssemblyTypeName: WheelSpinAnimator, Assembly-CSharp
+        m_TargetAssemblyTypeName: WheelSpinController, Assembly-CSharp
         m_MethodName: Spin
         m_Mode: 1
         m_Arguments:
@@ -879,6 +868,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447905305}
   m_CullTransparentMesh: 1
+--- !u!114 &447905310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447905305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75321d08fa3541c7a6323c31abb7ff79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spinButton: {fileID: 447905307}
+  _spinButtonText: {fileID: 1269087916}
+  _wheelStateController: {fileID: 1336153631}
 --- !u!1 &468794042
 GameObject:
   m_ObjectHideFlags: 0

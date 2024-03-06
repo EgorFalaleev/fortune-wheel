@@ -7,31 +7,36 @@ namespace _Project.Scripts.Runtime
     public class WheelStateController : MonoBehaviour
     {
         [SerializeField] private WheelGenerator _wheelGenerator;
-        
+
+        public float CooldownTimer { get; private set; }
+
+        public event EventHandler OnCooldownStateEnter;
+        public event EventHandler OnCooldownStateExit;
+
         private bool _isCooldownState;
-        private float _cooldownTimer;
         private float _wheelGeneratorTimer;
-        
+
         private void Start()
         {
-            _isCooldownState = true;
-            _cooldownTimer = RuntimeConstants.WheelSettings.CooldownTime;
-            _wheelGeneratorTimer = RuntimeConstants.WheelSettings.CooldownWheelGenerateTime;
+            EnterCooldownState();
         }
 
         private void Update()
         {
             if (!_isCooldownState)
                 return;
-            
-            _cooldownTimer -= Time.deltaTime;
+
+            CooldownTimer -= Time.deltaTime;
             _wheelGeneratorTimer -= Time.deltaTime;
 
             // exit cooldown state
-            if (_cooldownTimer < 0)
+            if (CooldownTimer < 0)
             {
                 _isCooldownState = false;
-                _cooldownTimer = RuntimeConstants.WheelSettings.CooldownTime;
+                CooldownTimer = RuntimeConstants.WheelSettings.CooldownTime;
+                
+                if (OnCooldownStateExit != null)
+                    OnCooldownStateExit(this, EventArgs.Empty);
             }
 
             // generate new wheel
@@ -40,6 +45,16 @@ namespace _Project.Scripts.Runtime
                 _wheelGenerator.GenerateWheel();
                 _wheelGeneratorTimer = RuntimeConstants.WheelSettings.CooldownWheelGenerateTime;
             }
+        }
+
+        private void EnterCooldownState()
+        {
+            _isCooldownState = true;
+            CooldownTimer = RuntimeConstants.WheelSettings.CooldownTime;
+            _wheelGeneratorTimer = RuntimeConstants.WheelSettings.CooldownWheelGenerateTime;
+
+            if (OnCooldownStateEnter != null)
+                OnCooldownStateEnter(this, EventArgs.Empty);
         }
     }
 }
