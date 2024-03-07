@@ -1290,8 +1290,7 @@ RectTransform:
   - {fileID: 468794043}
   - {fileID: 535189625}
   - {fileID: 1336153625}
-  - {fileID: 1980407739}
-  - {fileID: 2091634708}
+  - {fileID: 1249975990}
   m_Father: {fileID: 1914310285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -1738,6 +1737,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150091922}
   m_CullTransparentMesh: 1
+--- !u!1 &1249975989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249975990}
+  - component: {fileID: 1249975991}
+  m_Layer: 5
+  m_Name: Reward Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1249975990
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249975989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1980407739}
+  - {fileID: 2091634708}
+  m_Father: {fileID: 660908155}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -31.611}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1249975991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249975989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c209798c2834992a8862d2b69727777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewardImage: {fileID: 1980407740}
+  _rewardText: {fileID: 2091634709}
+  _wheelGenerator: {fileID: 1932290728}
+  _wheelStateController: {fileID: 1336153631}
+  _rewardTypeToSpritesList:
+  - type: 0
+    sprite: {fileID: 21300000, guid: c24708a79edcfff408af4532ea225d66, type: 3}
+  - type: 1
+    sprite: {fileID: 21300000, guid: 3230f2e3c258b414d88170c6166cac4a, type: 3}
+  - type: 2
+    sprite: {fileID: 21300000, guid: 46ee9e051e82a4a4892189a3bddea926, type: 3}
 --- !u!1 &1269087914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,12 +3004,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 660908155}
+  m_Father: {fileID: 1249975990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -31.61068}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1980407740
 MonoBehaviour:
@@ -3087,12 +3147,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 660908155}
+  m_Father: {fileID: 1249975990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25.30537}
-  m_SizeDelta: {x: 100, y: 87.3895}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091634709
 MonoBehaviour:
