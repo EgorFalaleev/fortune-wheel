@@ -14,9 +14,9 @@ public class WheelGenerator : MonoBehaviour
 
     public List<int> WheelNumbers { get; private set; }
     public RewardType CurrentReward { get; private set; }
-    public RewardType LastGeneratedReward { get; set; }
 
     private List<RewardType> _possibleRewards;
+    private int _rewardIndex;
 
     private void Awake()
     {
@@ -45,17 +45,24 @@ public class WheelGenerator : MonoBehaviour
                 WheelNumbers.Add(nextNumber);
         }
 
-        while (CurrentReward == LastGeneratedReward)
-            CurrentReward = (RewardType)Random.Range(0, Enum.GetValues(typeof(RewardType)).Length);
-
+        // get random reward type
+        _rewardIndex = GetRandomIndexExcludingCurrent(_rewardIndex, _possibleRewards.Count);
+        CurrentReward = _possibleRewards[_rewardIndex];
+        
         if (OnWheelGenerated != null)
             OnWheelGenerated(this, EventArgs.Empty);
+    }
+
+    private int GetRandomIndexExcludingCurrent(int currentIndex, int listCount)
+    {
+        // calculates a valid index randomly, excluding currentIndex 
+        return (currentIndex + Random.Range(1, listCount)) % listCount;
     }
 }
 
 public enum RewardType
 {
-    Crystal,
+    Diamond,
     Coin,
     Ruby
 }
