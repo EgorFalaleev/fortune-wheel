@@ -17,7 +17,10 @@ public class WheelSpinController : MonoBehaviour
         // choose random number on a wheel
         var resultIndex = Random.Range(0, _wheelGenerator.WheelNumbers.Count);
         SpinResult = _wheelGenerator.WheelNumbers[resultIndex];
-        Debug.Log($"Result: {SpinResult}");
+
+        _wheelGenerator.LastGeneratedReward = _wheelGenerator.CurrentReward;
+        
+        Debug.Log($"Result: {SpinResult} {_wheelGenerator.LastGeneratedReward}");
 
         AnimateWheelSpin(resultIndex);
     }
