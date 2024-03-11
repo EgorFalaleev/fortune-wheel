@@ -1599,7 +1599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 223}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119408245
@@ -1618,6 +1618,8 @@ MonoBehaviour:
   _parentObject: {fileID: 1119408244}
   _wheelSpinController: {fileID: 1336153629}
   _wheelGenerator: {fileID: 1336153632}
+  _minSpawnRadius: 8.02
+  _maxSpawnRaduis: 76.5
 --- !u!1 &1122628698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,7 +1803,7 @@ GameObject:
   - component: {fileID: 1249975991}
   m_Layer: 5
   m_Name: Reward Area
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

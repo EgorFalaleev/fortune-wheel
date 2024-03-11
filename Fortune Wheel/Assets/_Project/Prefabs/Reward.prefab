@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6390566338607903538}
   - component: {fileID: 4302631160250171588}
   - component: {fileID: -2524830728512305639}
+  - component: {fileID: 2946039967977610220}
   m_Layer: 5
   m_Name: Reward
   m_TagString: Untagged
@@ -88,3 +89,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238f92baa30b45289951af6672548d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minRewardLifetime: 1
+  _maxRewardLifetime: 2.5
+--- !u!114 &2946039967977610220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423421080000908862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a043b14057914915993f95c01538c869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveTime: 0.5
+  _scaleTime: 0.5
