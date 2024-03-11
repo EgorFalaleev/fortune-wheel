@@ -10,6 +10,7 @@ public class WheelSpinController : MonoBehaviour
 
     [SerializeField] private WheelGenerator _wheelGenerator;
 
+    public event EventHandler OnSpinAnimationStarted;
     public event EventHandler OnSpinAnimationFinished;
     
     public int SpinResult { get; private set; }
@@ -27,6 +28,9 @@ public class WheelSpinController : MonoBehaviour
 
     private void AnimateWheelSpin(int targetWheelPieceNumber)
     {
+        if (OnSpinAnimationStarted != null)
+            OnSpinAnimationStarted(this, EventArgs.Empty);
+        
         var targetAngle = targetWheelPieceNumber * RuntimeConstants.Wheel.WheelPieceAngle;
         var targetRotationVector = new Vector3(0, 0, 360 * _numberOfWheelRotations + targetAngle + RuntimeConstants.Wheel.WheelPieceAngle * 0.5f);
 

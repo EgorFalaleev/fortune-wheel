@@ -883,6 +883,7 @@ MonoBehaviour:
   _spinButton: {fileID: 447905307}
   _spinButtonText: {fileID: 1269087916}
   _wheelStateController: {fileID: 1336153631}
+  _wheelSpinController: {fileID: 1336153629}
 --- !u!1 &468794042
 GameObject:
   m_ObjectHideFlags: 0

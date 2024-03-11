@@ -12,6 +12,7 @@ namespace _Project.FortuneWheel.Runtime.UI
         [SerializeField] private TMP_Text _spinButtonText;
 
         [SerializeField] private WheelStateController _wheelStateController;
+        [SerializeField] private WheelSpinController _wheelSpinController;
 
         private bool _isTimerRunning;
 
@@ -19,12 +20,23 @@ namespace _Project.FortuneWheel.Runtime.UI
         {
             _wheelStateController.OnCooldownStateEnter += WheelStateControllerOnCooldownStateEnter;
             _wheelStateController.OnCooldownStateExit += WheelStateControllerOnCooldownStateExit;
+            _wheelSpinController.OnSpinAnimationStarted += WheelSpinControllerOnSpinAnimationStarted;
         }
+
 
         private void OnDisable()
         {
             _wheelStateController.OnCooldownStateEnter -= WheelStateControllerOnCooldownStateEnter;
             _wheelStateController.OnCooldownStateExit -= WheelStateControllerOnCooldownStateExit;
+            _wheelSpinController.OnSpinAnimationStarted -= WheelSpinControllerOnSpinAnimationStarted;
+        }
+
+        private void Update()
+        {
+            if (!_isTimerRunning)
+                return;
+
+            DisplayTimer();
         }
 
         private void WheelStateControllerOnCooldownStateEnter(object sender, EventArgs e)
@@ -38,13 +50,10 @@ namespace _Project.FortuneWheel.Runtime.UI
             _isTimerRunning = false;
             EnableButton();
         }
-
-        private void Update()
+        
+        private void WheelSpinControllerOnSpinAnimationStarted(object sender, EventArgs e)
         {
-            if (!_isTimerRunning)
-                return;
-
-            DisplayTimer();
+            DisableButton();
         }
 
         private void DisplayTimer()

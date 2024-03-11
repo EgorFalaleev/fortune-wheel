@@ -47,7 +47,7 @@ namespace _Project.Scripts.Runtime
             }
         }
 
-        private void EnterCooldownState()
+        public void EnterCooldownState()
         {
             _isCooldownState = true;
             CooldownTimer = RuntimeConstants.Wheel.CooldownTime;
