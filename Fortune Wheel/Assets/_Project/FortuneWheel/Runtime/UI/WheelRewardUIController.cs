@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Project.FortuneWheel.Runtime.Rewards;
 using _Project.Scripts.Runtime;
 using TMPro;
 using UnityEngine;
@@ -14,30 +15,8 @@ namespace _Project.FortuneWheel.Runtime.UI
         
         [SerializeField] private WheelGenerator _wheelGenerator;
         [SerializeField] private WheelStateController _wheelStateController;
-
-        [Serializable]
-        private class RewardTypeToSprite
-        {
-            public RewardType type;
-            public Sprite sprite;
-        }
-
-        // fake dictionary made for inspector setup
-        [SerializeField] private List<RewardTypeToSprite> _rewardTypeToSpritesList;
-
-        // real dictionary for code 
-        private Dictionary<RewardType, Sprite> _rewardTypeToSpritesDictionary;
-
-        private void Awake()
-        {
-            _rewardTypeToSpritesDictionary = new Dictionary<RewardType, Sprite>();
-
-            // fill the real dictionary with values from inspector
-            foreach (var entry in _rewardTypeToSpritesList)
-            {
-                _rewardTypeToSpritesDictionary.Add(entry.type, entry.sprite);
-            }
-        }
+        [SerializeField] private WheelSpinController _wheelSpinController;
+        [SerializeField] private RewardScoreCounter _rewardScoreCounter;
 
         private void Start()
         {
@@ -48,16 +27,34 @@ namespace _Project.FortuneWheel.Runtime.UI
         private void OnEnable()
         {
             _wheelGenerator.OnWheelGenerated += WheelGeneratorOnWheelGenerated;
+            _wheelSpinController.OnSpinAnimationFinished += WheelSpinControllerOnSpinAnimationFinished;
+            _rewardScoreCounter.OnScoreChanged += RewardScoreCounterOnScoreChanged;
         }
-
+        
         private void OnDisable()
         {
             _wheelGenerator.OnWheelGenerated -= WheelGeneratorOnWheelGenerated;
+            _wheelSpinController.OnSpinAnimationFinished -= WheelSpinControllerOnSpinAnimationFinished;
+            _rewardScoreCounter.OnScoreChanged -= RewardScoreCounterOnScoreChanged;
+        }
+        
+        private void RewardScoreCounterOnScoreChanged(object sender, EventArgs e)
+        {
+            _rewardText.text = _rewardScoreCounter.CurrentScore.ToString();
+        }
+        
+        private void WheelSpinControllerOnSpinAnimationFinished(object sender, EventArgs e)
+        {
+            _rewardImage.gameObject.SetActive(false);
+            _rewardText.gameObject.SetActive(true);
+            _rewardText.text = "0";
         }
 
         private void WheelGeneratorOnWheelGenerated(object sender, EventArgs e)
         {
-            _rewardImage.sprite = _rewardTypeToSpritesDictionary[_wheelGenerator.CurrentReward];
+            _rewardText.gameObject.SetActive(false);
+            _rewardImage.gameObject.SetActive(true);
+            _rewardImage.sprite = _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentRewardType];
         }
     }
 }

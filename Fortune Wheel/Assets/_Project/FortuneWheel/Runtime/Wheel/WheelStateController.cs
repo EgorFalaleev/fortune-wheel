@@ -33,7 +33,7 @@ namespace _Project.Scripts.Runtime
             if (CooldownTimer < 0)
             {
                 _isCooldownState = false;
-                CooldownTimer = RuntimeConstants.WheelSettings.CooldownTime;
+                CooldownTimer = RuntimeConstants.Wheel.CooldownTime;
                 
                 if (OnCooldownStateExit != null)
                     OnCooldownStateExit(this, EventArgs.Empty);
@@ -43,15 +43,15 @@ namespace _Project.Scripts.Runtime
             if (_wheelGeneratorTimer < 0)
             {
                 _wheelGenerator.GenerateWheel();
-                _wheelGeneratorTimer = RuntimeConstants.WheelSettings.CooldownWheelGenerateTime;
+                _wheelGeneratorTimer = RuntimeConstants.Wheel.CooldownWheelGenerateTime;
             }
         }
 
-        private void EnterCooldownState()
+        public void EnterCooldownState()
         {
             _isCooldownState = true;
-            CooldownTimer = RuntimeConstants.WheelSettings.CooldownTime;
-            _wheelGeneratorTimer = RuntimeConstants.WheelSettings.CooldownWheelGenerateTime;
+            CooldownTimer = RuntimeConstants.Wheel.CooldownTime;
+            _wheelGeneratorTimer = RuntimeConstants.Wheel.CooldownWheelGenerateTime;
 
             if (OnCooldownStateEnter != null)
                 OnCooldownStateEnter(this, EventArgs.Empty);
