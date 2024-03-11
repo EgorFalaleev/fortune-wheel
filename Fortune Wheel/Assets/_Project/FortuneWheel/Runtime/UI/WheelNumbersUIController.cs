@@ -1,8 +1,9 @@
 ﻿using System;
+using FortuneWheel.Runtime.Wheel;
 using TMPro;
 using UnityEngine;
 
-namespace _Project.FortuneWheel.Runtime.UI
+namespace FortuneWheel.Runtime.UI
 {
     public class WheelNumbersUIController : MonoBehaviour
     {

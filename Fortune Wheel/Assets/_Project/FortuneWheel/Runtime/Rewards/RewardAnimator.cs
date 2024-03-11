@@ -2,7 +2,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace _Project.FortuneWheel.Runtime.Rewards
+namespace FortuneWheel.Runtime.Rewards
 {
     public class RewardAnimator : MonoBehaviour
     {

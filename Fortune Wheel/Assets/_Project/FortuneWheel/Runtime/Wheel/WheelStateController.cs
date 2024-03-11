@@ -1,8 +1,7 @@
 ﻿using System;
-using _Project.FortuneWheel.Runtime;
 using UnityEngine;
 
-namespace _Project.Scripts.Runtime
+namespace FortuneWheel.Runtime.Wheel
 {
     public class WheelStateController : MonoBehaviour
     {

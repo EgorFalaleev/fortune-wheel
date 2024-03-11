@@ -1,11 +1,9 @@
 ﻿using System;
-using _Project.FortuneWheel.Runtime;
-using _Project.FortuneWheel.Runtime.Rewards;
+using FortuneWheel.Runtime.Wheel;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace _Project.Scripts.Runtime
+namespace FortuneWheel.Runtime.Rewards
 {
     public class RewardSpawner : MonoBehaviour
     {

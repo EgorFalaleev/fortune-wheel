@@ -1308,6 +1308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057f6654d9f2496e8e2f620e11883bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wheelSpinController: {fileID: 1336153629}
+  _wheelStateController: {fileID: 1336153631}
 --- !u!1 &660908154
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-﻿namespace _Project.FortuneWheel.Runtime
+﻿namespace FortuneWheel.Runtime
 {
     public static class RuntimeConstants
     {

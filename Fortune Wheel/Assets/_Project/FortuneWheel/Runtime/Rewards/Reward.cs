@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace _Project.FortuneWheel.Runtime.Rewards
+namespace FortuneWheel.Runtime.Rewards
 {
     public class Reward : MonoBehaviour
     {

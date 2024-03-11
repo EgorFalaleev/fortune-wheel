@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
-using _Project.Scripts.Runtime;
+using FortuneWheel.Runtime.Wheel;
 using UnityEngine;
 
-namespace _Project.FortuneWheel.Runtime.Rewards
+namespace FortuneWheel.Runtime.Rewards
 {
     public class RewardScoreCounter : MonoBehaviour
     {
@@ -13,7 +13,6 @@ namespace _Project.FortuneWheel.Runtime.Rewards
         public int CurrentScore { get; private set; }
 
         public event EventHandler OnScoreChanged;
-        public event EventHandler OnTargetScoreReached;
 
         public void UpdateScore(int value)
         {
