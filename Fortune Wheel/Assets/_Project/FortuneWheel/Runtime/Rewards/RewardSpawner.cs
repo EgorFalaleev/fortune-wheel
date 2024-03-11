@@ -3,6 +3,7 @@ using _Project.FortuneWheel.Runtime;
 using _Project.FortuneWheel.Runtime.Rewards;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Runtime
 {
@@ -13,6 +14,10 @@ namespace _Project.Scripts.Runtime
         
         [SerializeField] private WheelSpinController _wheelSpinController;
         [SerializeField] private WheelGenerator _wheelGenerator;
+
+        [Header("Spawn parameters")] 
+        [Range(0f, 15f)] [SerializeField] private float _minSpawnRadius;
+        [Range(25f, 100f)] [SerializeField] private float _maxSpawnRaduis;
 
         private void OnEnable()
         {
@@ -41,14 +46,27 @@ namespace _Project.Scripts.Runtime
 
                 var newReward = SpawnReward();
                 newReward.GetComponent<Reward>().Initialize(currentRewardValue, _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentRewardType]);
+                newReward.GetComponent<RewardAnimator>().InitialPosition =
+                    GenerateRandomPositionAroundPoint(_parentObject.transform.position);
             }
         }
         
         private GameObject SpawnReward()
         {
-            var newObject = Instantiate(_rewardPrefab, _parentObject.position, Quaternion.identity);
+            var newObject = Instantiate(_rewardPrefab, _parentObject.transform.position, Quaternion.identity);
             newObject.transform.SetParent(_parentObject);
             return newObject;
+        }
+
+        private Vector3 GenerateRandomPositionAroundPoint(Vector3 point)
+        {
+            var randomAngle = Random.Range(0, Mathf.PI * 2);
+            var radius = Random.Range(_minSpawnRadius, _maxSpawnRaduis);
+
+            // generate a point on a circle
+            var spawnPosition = new Vector3(point.x + Mathf.Sin(randomAngle) * radius, point.y + Mathf.Cos(randomAngle) * radius, point.z);
+
+            return spawnPosition;
         }
     }
 }
