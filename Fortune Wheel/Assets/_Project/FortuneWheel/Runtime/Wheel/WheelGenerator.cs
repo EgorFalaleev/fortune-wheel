@@ -13,10 +13,10 @@ public class WheelGenerator : MonoBehaviour
     public event EventHandler OnWheelGenerated;
 
     public List<int> WheelNumbers { get; private set; }
-    public RewardType CurrentReward { get; private set; }
+    public RewardType CurrentRewardType { get; private set; }
 
     private List<RewardType> _possibleRewards;
-    private int _rewardIndex;
+    private int _rewardTypeIndex;
     
     
     [Serializable]
@@ -58,7 +58,7 @@ public class WheelGenerator : MonoBehaviour
         WheelNumbers.Clear();
 
         // fill the list with unique values
-        while (WheelNumbers.Count != RuntimeConstants.WheelConfig.WheelSize)
+        while (WheelNumbers.Count != RuntimeConstants.Wheel.WheelSize)
         {
             var nextNumber = Random.Range(1, 21) * 5;
 
@@ -67,8 +67,8 @@ public class WheelGenerator : MonoBehaviour
         }
 
         // get random reward type
-        _rewardIndex = GetRandomIndexExcludingCurrent(_rewardIndex, _possibleRewards.Count);
-        CurrentReward = _possibleRewards[_rewardIndex];
+        _rewardTypeIndex = GetRandomIndexExcludingCurrent(_rewardTypeIndex, _possibleRewards.Count);
+        CurrentRewardType = _possibleRewards[_rewardTypeIndex];
         
         if (OnWheelGenerated != null)
             OnWheelGenerated(this, EventArgs.Empty);

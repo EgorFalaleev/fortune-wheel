@@ -27,8 +27,8 @@ public class WheelSpinController : MonoBehaviour
 
     private void AnimateWheelSpin(int targetWheelPieceNumber)
     {
-        var targetAngle = targetWheelPieceNumber * RuntimeConstants.WheelConfig.WheelPieceAngle;
-        var targetRotationVector = new Vector3(0, 0, 360 * _numberOfWheelRotations + targetAngle + RuntimeConstants.WheelConfig.WheelPieceAngle * 0.5f);
+        var targetAngle = targetWheelPieceNumber * RuntimeConstants.Wheel.WheelPieceAngle;
+        var targetRotationVector = new Vector3(0, 0, 360 * _numberOfWheelRotations + targetAngle + RuntimeConstants.Wheel.WheelPieceAngle * 0.5f);
 
         transform.DORotate(targetRotationVector, 5f, RotateMode.FastBeyond360).SetEase(Ease.OutCubic).OnComplete(() =>
         {

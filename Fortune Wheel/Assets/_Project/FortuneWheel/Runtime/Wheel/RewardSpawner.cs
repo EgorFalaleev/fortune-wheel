@@ -27,7 +27,7 @@ namespace _Project.Scripts.Runtime
         private void WheelSpinControllerOnSpinAnimationFinished(object sender, EventArgs e)
         {
             var spinScore = _wheelSpinController.SpinResult;
-            var numberOfObjectsToSpawn = Mathf.Min(spinScore, RuntimeConstants.RewardSpawnerConfig.MaxRewardsToSpawn);
+            var numberOfObjectsToSpawn = Mathf.Min(spinScore, RuntimeConstants.RewardSpawner.MaxRewardsToSpawn);
             var valuePerReward = spinScore / numberOfObjectsToSpawn;
             var remainingValue = spinScore % numberOfObjectsToSpawn;
 
@@ -40,7 +40,7 @@ namespace _Project.Scripts.Runtime
                     currentRewardValue++;
 
                 var newReward = SpawnReward();
-                newReward.GetComponent<Reward>().Initialize(currentRewardValue, _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentReward]);
+                newReward.GetComponent<Reward>().Initialize(currentRewardValue, _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentRewardType]);
             }
         }
         

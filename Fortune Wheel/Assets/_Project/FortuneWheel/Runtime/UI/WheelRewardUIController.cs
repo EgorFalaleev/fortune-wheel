@@ -46,7 +46,7 @@ namespace _Project.FortuneWheel.Runtime.UI
         {
             _rewardText.gameObject.SetActive(false);
             _rewardImage.gameObject.SetActive(true);
-            _rewardImage.sprite = _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentReward];
+            _rewardImage.sprite = _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentRewardType];
         }
     }
 }
