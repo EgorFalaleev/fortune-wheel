@@ -15,30 +15,6 @@ namespace _Project.FortuneWheel.Runtime.UI
         [SerializeField] private WheelGenerator _wheelGenerator;
         [SerializeField] private WheelStateController _wheelStateController;
 
-        [Serializable]
-        private class RewardTypeToSprite
-        {
-            public RewardType type;
-            public Sprite sprite;
-        }
-
-        // fake dictionary made for inspector setup
-        [SerializeField] private List<RewardTypeToSprite> _rewardTypeToSpritesList;
-
-        // real dictionary for code 
-        private Dictionary<RewardType, Sprite> _rewardTypeToSpritesDictionary;
-
-        private void Awake()
-        {
-            _rewardTypeToSpritesDictionary = new Dictionary<RewardType, Sprite>();
-
-            // fill the real dictionary with values from inspector
-            foreach (var entry in _rewardTypeToSpritesList)
-            {
-                _rewardTypeToSpritesDictionary.Add(entry.type, entry.sprite);
-            }
-        }
-
         private void Start()
         {
             _rewardText.gameObject.SetActive(false);
@@ -57,7 +33,7 @@ namespace _Project.FortuneWheel.Runtime.UI
 
         private void WheelGeneratorOnWheelGenerated(object sender, EventArgs e)
         {
-            _rewardImage.sprite = _rewardTypeToSpritesDictionary[_wheelGenerator.CurrentReward];
+            _rewardImage.sprite = _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentReward];
         }
     }
 }

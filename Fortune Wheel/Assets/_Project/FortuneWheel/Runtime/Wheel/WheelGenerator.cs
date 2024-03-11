@@ -17,11 +17,32 @@ public class WheelGenerator : MonoBehaviour
 
     private List<RewardType> _possibleRewards;
     private int _rewardIndex;
+    
+    
+    [Serializable]
+    private class RewardTypeToSprite
+    {
+        public RewardType type;
+        public Sprite sprite;
+    }
+
+    // fake dictionary made for inspector setup
+    [SerializeField] private List<RewardTypeToSprite> _rewardTypeToSpritesList;
+
+    // real dictionary for code 
+    public Dictionary<RewardType, Sprite> RewardTypeToSpritesDictionary { get; private set; }
 
     private void Awake()
     {
+        RewardTypeToSpritesDictionary = new Dictionary<RewardType, Sprite>();
         WheelNumbers = new List<int>();
         _possibleRewards = new List<RewardType>();
+
+        // fill the real dictionary with values from inspector
+        foreach (var entry in _rewardTypeToSpritesList)
+        {
+            RewardTypeToSpritesDictionary.Add(entry.type, entry.sprite);
+        }
     }
 
     private void Start()
@@ -37,7 +58,7 @@ public class WheelGenerator : MonoBehaviour
         WheelNumbers.Clear();
 
         // fill the list with unique values
-        while (WheelNumbers.Count != RuntimeConstants.WheelSettings.WheelSize)
+        while (WheelNumbers.Count != RuntimeConstants.WheelConfig.WheelSize)
         {
             var nextNumber = Random.Range(1, 21) * 5;
 
