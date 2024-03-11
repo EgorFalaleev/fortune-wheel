@@ -2,14 +2,17 @@
 using _Project.FortuneWheel.Runtime;
 using _Project.FortuneWheel.Runtime.Rewards;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Project.Scripts.Runtime
 {
     public class RewardSpawner : MonoBehaviour
     {
         [SerializeField] private GameObject _rewardPrefab;
+        [SerializeField] private RectTransform _parentObject;
         
         [SerializeField] private WheelSpinController _wheelSpinController;
+        [SerializeField] private WheelGenerator _wheelGenerator;
 
         private void OnEnable()
         {
@@ -37,13 +40,15 @@ namespace _Project.Scripts.Runtime
                     currentRewardValue++;
 
                 var newReward = SpawnReward();
-                newReward.GetComponent<Reward>().Value = currentRewardValue;
+                newReward.GetComponent<Reward>().Initialize(currentRewardValue, _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentReward]);
             }
         }
         
         private GameObject SpawnReward()
         {
-            return Instantiate(_rewardPrefab, transform.position, Quaternion.identity);
+            var newObject = Instantiate(_rewardPrefab, _parentObject.position, Quaternion.identity);
+            newObject.transform.SetParent(_parentObject);
+            return newObject;
         }
     }
 }

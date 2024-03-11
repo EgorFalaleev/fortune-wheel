@@ -1614,8 +1614,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2f32bc0ce94bf6891040167db9184c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardPrefab: {fileID: 8210895688741904597, guid: da978bbd8cddbea4e82de1fd5ffc07cc, type: 3}
+  _rewardPrefab: {fileID: 3423421080000908862, guid: 269b25827ae9d6a43a19c3f03e6d6f2f, type: 3}
+  _parentObject: {fileID: 1119408244}
   _wheelSpinController: {fileID: 1336153629}
+  _wheelGenerator: {fileID: 1336153632}
 --- !u!1 &1122628698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1844,7 @@ MonoBehaviour:
   _rewardText: {fileID: 2091634709}
   _wheelGenerator: {fileID: 1336153632}
   _wheelStateController: {fileID: 1336153631}
+  _wheelSpinController: {fileID: 1336153629}
 --- !u!1 &1269087914
 GameObject:
   m_ObjectHideFlags: 0

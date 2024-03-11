@@ -14,6 +14,7 @@ namespace _Project.FortuneWheel.Runtime.UI
         
         [SerializeField] private WheelGenerator _wheelGenerator;
         [SerializeField] private WheelStateController _wheelStateController;
+        [SerializeField] private WheelSpinController _wheelSpinController; 
 
         private void Start()
         {
@@ -24,15 +25,27 @@ namespace _Project.FortuneWheel.Runtime.UI
         private void OnEnable()
         {
             _wheelGenerator.OnWheelGenerated += WheelGeneratorOnWheelGenerated;
+            _wheelSpinController.OnSpinAnimationFinished += WheelSpinControllerOnSpinAnimationFinished;
         }
-
+        
         private void OnDisable()
         {
             _wheelGenerator.OnWheelGenerated -= WheelGeneratorOnWheelGenerated;
+            _wheelSpinController.OnSpinAnimationFinished -= WheelSpinControllerOnSpinAnimationFinished;
+        }
+        
+        
+        private void WheelSpinControllerOnSpinAnimationFinished(object sender, EventArgs e)
+        {
+            _rewardImage.gameObject.SetActive(false);
+            _rewardText.gameObject.SetActive(true);
+            _rewardText.text = "0";
         }
 
         private void WheelGeneratorOnWheelGenerated(object sender, EventArgs e)
         {
+            _rewardText.gameObject.SetActive(false);
+            _rewardImage.gameObject.SetActive(true);
             _rewardImage.sprite = _wheelGenerator.RewardTypeToSpritesDictionary[_wheelGenerator.CurrentReward];
         }
     }
