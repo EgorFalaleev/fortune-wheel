@@ -1,14 +1,16 @@
-using System.Linq;
+using System;
 using _Project.FortuneWheel.Runtime;
-using _Project.Scripts.Runtime;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WheelSpinController : MonoBehaviour
 {
     [Range(1, 20)] [SerializeField] private int _numberOfWheelRotations = 10;
 
     [SerializeField] private WheelGenerator _wheelGenerator;
+
+    public event EventHandler OnSpinAnimationFinished;
     
     public int SpinResult { get; private set; }
     
@@ -25,9 +27,13 @@ public class WheelSpinController : MonoBehaviour
 
     private void AnimateWheelSpin(int targetWheelPieceNumber)
     {
-        var targetAngle = targetWheelPieceNumber * RuntimeConstants.WheelSettings.WheelPieceAngle;
-        var targetRotationVector = new Vector3(0, 0, 360 * _numberOfWheelRotations + targetAngle + RuntimeConstants.WheelSettings.WheelPieceAngle * 0.5f);
+        var targetAngle = targetWheelPieceNumber * RuntimeConstants.WheelConfig.WheelPieceAngle;
+        var targetRotationVector = new Vector3(0, 0, 360 * _numberOfWheelRotations + targetAngle + RuntimeConstants.WheelConfig.WheelPieceAngle * 0.5f);
 
-        transform.DORotate(targetRotationVector, 5f, RotateMode.FastBeyond360).SetEase(Ease.OutCubic);
+        transform.DORotate(targetRotationVector, 5f, RotateMode.FastBeyond360).SetEase(Ease.OutCubic).OnComplete(() =>
+        {
+            if (OnSpinAnimationFinished != null)
+                OnSpinAnimationFinished(this, EventArgs.Empty);
+        });
     }
 }
