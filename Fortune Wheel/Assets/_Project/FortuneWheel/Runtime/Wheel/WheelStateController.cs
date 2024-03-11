@@ -29,7 +29,7 @@ namespace FortuneWheel.Runtime.Wheel
             _wheelGeneratorTimer -= Time.deltaTime;
 
             // exit cooldown state
-            if (CooldownTimer < 0)
+            if (CooldownTimer < 1f)
             {
                 _isCooldownState = false;
                 CooldownTimer = RuntimeConstants.Wheel.CooldownTime;
