@@ -14,10 +14,12 @@ namespace _Project.FortuneWheel.Runtime.Rewards
         private Vector3 _destructionPosition;
         
         private Reward _reward;
+        private RewardScoreCounter _rewardScoreCounter;
 
         private void Awake()
         {
             _reward = GetComponent<Reward>();
+            _rewardScoreCounter = GameObject.FindGameObjectWithTag(RuntimeConstants.Tags.Counter).GetComponent<RewardScoreCounter>();
         }
 
         private void OnEnable()
@@ -41,7 +43,12 @@ namespace _Project.FortuneWheel.Runtime.Rewards
         
         private void RewardOnLifetimeEnded(object sender, EventArgs e)
         {
-            transform.DOMove(_destructionPosition, _moveTime).SetEase(Ease.OutCubic);
+            transform.DOScale(Vector3.zero, _scaleTime);
+            transform.DOMove(_destructionPosition, _moveTime).SetEase(Ease.OutCubic).OnComplete(() =>
+            {
+                _rewardScoreCounter.UpdateScore(_reward.Value);
+                Destroy(gameObject);
+            });
         }
     }
 }
